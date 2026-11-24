@@ -542,7 +542,6 @@ function reloadModel() {
 		bgm = null;
 	}
 	
-	slotsHidden = false;
 
 	// Stop all intro audio and clear related timeouts
 	introAudioIsPlaying = false;
@@ -645,9 +644,6 @@ function interactionLoad() {
 function load(dynamicBinaryPath, dynamicAtlasPath) {
 	spineData = loadSpineData(dynamicBinaryPath, dynamicAtlasPath, false);
 
-	// 在设置动画之前隐藏指定的骨骼
-	hideSpecifiedSlots();
-
 	// User Option to skip Intro Animation
 	if (introAnimation) {
 		spineData.state.addAnimation(0, 'Start_Idle_01', false);
@@ -684,6 +680,31 @@ function load(dynamicBinaryPath, dynamicAtlasPath) {
 	canvas.style.visibility = 'visible';
 }
 
+const GLARE_SLOTS = new Set([
+	"twintail_back_light", "twintail_back_light2", "twintail_back_light3", "twintail_front_light 03",
+	"twintail_front_light 06", "twintail_front_light 08", "twintail_front_light 02", "twintail_front_light 01",
+	"twintail_front_light 04", "twintail_front_light 09", "reflect 00", "reflect 08",
+	"reflect 03", "reflect 06", "reflect 01", "reflect 04",
+	"reflect 02", "reflect 05", "reflect 07", "reflect03",
+	"reflect04", "reflect05", "ground", "ground2",
+	"ground3", "bike_FX_03", "bike_FX_06", "bike_FX_09",
+	"bike_FX_02", "bike_FX_05", "bike_FX_08", "bike_FX_01",
+	"bike_FX_04", "bike_FX_07", "screen2", "screen",
+	"hoverbike_fx"
+]);
+const GLARE_OPACITY = 0.24;
+
+// Scale attachment opacity once so animated slot colors still control the light.
+function applyGlareOpacity(skeletonData) {
+	for (const skin of skeletonData.skins) {
+		for (const { slotIndex, attachment } of skin.getAttachments()) {
+			const slot = skeletonData.slots[slotIndex];
+			if (!GLARE_SLOTS.has(slot.name) || slot.blendMode !== 1 || !attachment.color) continue;
+			attachment.color.a *= GLARE_OPACITY;
+		}
+	}
+}
+
 function loadSpineData(binaryPath, atlasPath, premultipliedAlpha) {
 	// Load the texture atlas from the AssetManager.
 	let atlas = assetManager.get(atlasPath);
@@ -697,6 +718,7 @@ function loadSpineData(binaryPath, atlasPath, premultipliedAlpha) {
 	// Set the scale to apply during parsing, parse the file, and create a new skeleton.
 	skeletonBinary.scale = 1;
 	let skeletonData = skeletonBinary.readSkeletonData(assetManager.get(binaryPath));
+	applyGlareOpacity(skeletonData);
 	let skeleton = new spine.Skeleton(skeletonData);
 	let bounds = calculateSetupPoseBounds(skeleton);
 
@@ -718,41 +740,8 @@ function calculateSetupPoseBounds(skeleton) {
 	return { offset: offset, size: size };
 }
 
-let slotsHidden = false;
 
-// 定义需要隐藏的骨骼名称列表（全局变量）
-const slotsToHide = [
-	"twintail_back_light", "twintail_back_light2", "twintail_back_light3",
-	"twintail_front_light 03", "twintail_front_light 06", "twintail_front_light 08",
-	"twintail_front_light 02", "twintail_front_light 01", "twintail_front_light 04",
-	"twintail_front_light 09", "reflect 00", "reflect 01", "reflect 02",
-	"reflect 03", "reflect 04", "reflect 05", "reflect 06", "reflect 07",
-	"reflect 08", "reflect03", "reflect04", "reflect05",
-	"bike_FX_01", "bike_FX_02", "bike_FX_03", "bike_FX_04", "bike_FX_05",
-	"bike_FX_06", "bike_FX_07", "bike_FX_08", "bike_FX_09", "ground", "ground2", "ground3"	
-];
 
-function hideSpecifiedSlots() {
-	if (spineData && spineData.skeleton) {
-		let foundSlots = 0;
-		let totalSlots = slotsToHide.length;
-		
-		// 遍历并隐藏所有指定的骨骼（每次渲染都执行）
-		slotsToHide.forEach(slotName => {
-			let slot = spineData.skeleton.findSlot(slotName);
-			if (slot) {
-				slot.setAttachment(null);
-				foundSlots++;
-			}
-		});
-		
-		// 只在首次执行时显示调试信息
-		if (!slotsHidden) {
-			console.log("总共尝试隐藏 " + totalSlots + " 个骨骼，成功隐藏 " + foundSlots + " 个");
-			slotsHidden = true;
-		}
-	}
-}
 
 function render() {
     let now = Date.now() / 1000;
@@ -772,9 +761,6 @@ function render() {
         state.update(delta);
 		state.apply(skeleton);
 		
-		// 在渲染时检查并隐藏指定的骨骼
-		hideSpecifiedSlots();
-
         const pointX = TPoint.x;
         const pointY = TPoint.y;
         applyHeadpat(delta);
