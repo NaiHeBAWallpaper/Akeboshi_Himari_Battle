@@ -44,7 +44,8 @@ const subtitleLocales = {
 	Chinese: 'zh-Hans',
 	TraditionalChinese: 'zh-Hant',
 	Japanese: 'ja',
-	Korean: 'ko'
+	Korean: 'ko',
+	Thai: 'th'
 };
 
 const CHARACTER = 'CH0332';
@@ -61,21 +62,22 @@ const AUDIO_DETAIL = [
                 "ミレニアムと変わらず、ここでも夜空を見上げることはできるのに。"
             ],
             English: [
-                "It’s strange, isn't it?",
-                "Even here, we can look up at the night sky just as we did back at Millennium."
+                "It's interesting.",
+                "We can look up at the night sky like we could back at Millennium."
             ],
             Chinese: [
                 "真奇妙呢。",
                 "明明在这里也和在千禧年时一样，能够仰望这片夜空。"
             ],
             TraditionalChinese: [
-                "真奇妙呢。",
-                "明明在這裡也和在千禧年時一樣，能夠仰望這片夜空。"
+                "真是不可思議呢。",
+                "明明和千年一樣，在這裡也能仰望夜空。"
             ],
             Korean: [
-                "이상한 일이죠?",
-                "여기서도 우리는 밤하늘을 바라볼 수 있습니다. 밀레니엄에서 그랬던 것처럼요."
-            ]
+                "신기한 일이죠.",
+                "밀레니엄에서 그랬던 것처럼, 여기에서도 밤하늘을 올려다볼 수 있는데도."
+            ],
+            Thai: ["น่าประหลาดใจนะคะ","ตอนอยู่มิลเลเนียมก็เคยทำแบบนี้ พอมาอยู่ที่นี่ ก็แหงนหน้า มองท้องฟ้ายามค่ำคืนได้อีก"]
         }
     },
     {
@@ -85,21 +87,22 @@ const AUDIO_DETAIL = [
                 "どうにも言語化が難しい……形容しがたい感覚です。"
             ],
             English: [
-                "Yet, the twinkling stars are so different from the ones we know.",
-                "It’s quite difficult to verbalize... an indescribable feeling."
+                "But the stars shining here are a bit different from what we know.",
+                "It's a mysterious sensation...that I've had difficulty expressing with words."
             ],
             Chinese: [
                 "但闪烁的星辰却与我们所熟知的完全不同。",
                 "实在难以用语言表达……是一种难以言喻的感觉。"
             ],
             TraditionalChinese: [
-                "但閃爍的星辰卻與我們所熟知的完全不同。",
-                "實在難以用語言表達……是一種難以言喻的感覺。"
+                "閃耀的星星，卻和我們認識的有所不同。",
+                "是種很難用言語表達……難以形容的感覺。"
             ],
             Korean: [
-                "그러나 빛나는 별들은 우리가 알고 있는 별들과 매우 다릅니다.",
-                "말 그대로 표현하기는 어렵습니다. 설명할 수 없는 감정이죠."
-            ]
+                "이곳에서 빛나는 별은, 우리가 아는 것과는 어딘가 다르네요.",
+                "좀처럼 말로 표현하기 어려운…… 신비한 감각이라고나 할까요."
+            ],
+            Thai: ["ดาวที่ส่องแสงอยู่ที่นี่ ดูมีบางอย่างแตกต่าง จากดาวที่เรารู้จักกันนะคะ","คงต้องบอกว่า เป็นความรู้สึกลึกลับ... ที่ยากจะถ่ายทอดเป็นคำพูดได้ค่ะ"]
         }
     },
     {
@@ -109,21 +112,22 @@ const AUDIO_DETAIL = [
                 "あ、ありがとうございます。その……褒め言葉として受け取っておきます。"
             ],
             English: [
-                "Yes...?!",
-                "Oh, thank you. Um... I shall take that as a compliment, then."
+                "What...?",
+                "Th-Thank you. I-I will take that as a compliment."
             ],
             Chinese: [
                 "是……！？",
                 "啊，谢谢您。那个……我就把它当作是对我的夸奖收下了。"
             ],
             TraditionalChinese: [
-                "是……！？",
-                "啊，謝謝您。那個……我就把它當作是對我的誇獎收下了。"
+                "咦……！？",
+                "謝，謝謝您。那個……我就當作是在稱讚我了。"
             ],
             Korean: [
-                "그래...?!",
-                "고마워요, 칭찬으로 받아들일게요"
-            ]
+                "네……?!",
+                "가, 감사합니다. 치, 칭찬해 주신 것으로 이해하겠어요."
+            ],
+            Thai: ["คะ...?!","ขะ... ขอบคุณค่ะ ฉะ... ฉันจะเข้าใจว่า นี่เป็นการชมนะคะ"]
         }
     },
     {
@@ -133,21 +137,22 @@ const AUDIO_DETAIL = [
                 "互いが互いを理解できるとは限りません。"
             ],
             English: [
-                "...Even if we stand under the same night sky,",
-                "it doesn't necessarily mean we can understand one another."
+                "...Even if we're all under the same night sky,",
+                "I suppose not everyone can understand each other."
             ],
             Chinese: [
                 "……即便身处于同一片夜空下。",
                 "也未必代表彼此就能互相理解。"
             ],
             TraditionalChinese: [
-                "……即便身處於同一片夜空下。",
-                "也未必代表彼此就能互相理解。"
+                "……即使身在同一片夜空之下。",
+                "也不代表彼此之間能夠互相理解。"
             ],
             Korean: [
-                "...우리가 같은 밤하늘 아래 서도,",
-                "그렇다고 서로 이해할 수 있는 것은 아닙니다."
-            ]
+                "……같은 밤하늘 아래에 있다고 하더라도.",
+                "모두가 모두를 이해할 수 있는 것은 아니겠죠."
+            ],
+            Thai: ["ต่อให้บอกว่าอยู่ภายใต้ ท้องฟ้ายามค่ำคืนผืนเดียวกัน","แต่ก็ใช่ว่าเราทั้งหมด จะเข้าใจทุกคนได้หรอกค่ะ"]
         }
     },
     {
@@ -157,21 +162,22 @@ const AUDIO_DETAIL = [
                 "互いを理解するきっかけくらいには、なるのではないでしょうか。"
             ],
             English: [
-                "But at the very least, since we are under the 'same' sky...",
-                "Perhaps it can serve as a catalyst for us to understand each other."
+                "But since we're at least all under that same sky,",
+                "it could serve as an opportunity for us to understand one another."
             ],
             Chinese: [
                 "但至少，既然我们同在这一片夜空之下。",
                 "这或许能成为一个让我们去了解彼此的契机也说不定。"
             ],
             TraditionalChinese: [
-                "但至少，既然我們同在這一片夜空之下。",
-                "這或許能成為一個讓我們去了解彼此的契機也說不定。"
+                "不過至少，是在「同一片」夜空之下。",
+                "那或許能夠成為相互理解的契機也說不定。"
             ],
             Korean: [
-                "하지만 적어도 우리가 같은 하늘 아래 있기 때문에...",
-                "어쩌면 그것은 우리가 서로를 이해하는 촉매 역할을 할 수 있습니다."
-            ]
+                "하지만 적어도 같은 하늘 아래에 있다는 것은 확실하니.",
+                "서로를 이해할 계기 정도는, 되지 않을까요."
+            ],
+            Thai: ["แต่อย่างน้อย ก็เป็นเรื่องแน่แท้ว่า เราอยู่ใต้ท้องฟ้าเดียวกัน","อย่างน้อยนี่น่าจะเป็นโอกาส ที่เราจะเข้าใจกันและกันได้นะคะ"]
         }
     },
     {
@@ -181,21 +187,22 @@ const AUDIO_DETAIL = [
                 "先生は、どう思われますか？"
             ],
             English: [
-                "At least, that is how I feel.",
-                "What do you think, Sensei?"
+                "At least that's what I believe.",
+                "What about you, Sensei?"
             ],
             Chinese: [
                 "我是这么认为的。",
                 "老师，您觉得呢？"
             ],
             TraditionalChinese: [
-                "我是這麼認為的。",
-                "機會難得，老師覺得如何呢？"
+                "我是這麼想的。",
+                "老師您，是怎麼想的呢？"
             ],
             Korean: [
-                "적어도 내가 느끼는 건 그런 것 같아요.",
-                "모처럼이니 선생님도 어떠신가요?"
-            ]
+                "저는 그렇게 생각해요.",
+                "선생님은, 어떻게 생각하시나요?"
+            ],
+            Thai: ["ฉันคิดอย่างนั้นค่ะ","แล้วคุณครูล่ะ คิดยังไงบ้างคะ?"]
         }
     }
 ];
@@ -307,7 +314,7 @@ function playVoiceline() {
 			track.play().catch(finish);
 
 			if (dialogBox) {
-				textbox.textContent = dialog[window.selectedLanguage][index];
+				textbox.textContent = getSubtitleText(dialog, window.selectedLanguage, index);
 				textbox.style.opacity = 1;
 			}
 		},
@@ -477,6 +484,16 @@ function setMouse(event) {
 	return { x: ax - canvas.width * positionX, y: ay - canvas.height * positionY };
 }
 
+function getSubtitleText(dialog, language, index) {
+	let text = dialog?.[language]?.[index];
+	if (text == null && language === 'Thai') {
+		language = 'English';
+		text = dialog?.[language]?.[index];
+	}
+	textbox.lang = subtitleLocales[language];
+	return text ?? "";
+}
+
 function updateSubtitleLanguage() {
 	let language = subtitleLanguagePreference;
 	if (language === 'auto') {
@@ -490,6 +507,8 @@ function updateSubtitleLanguage() {
 			language = 'Japanese';
 		} else if (primary === 'ko' || primary === 'korean' || primary === 'koreana') {
 			language = 'Korean';
+		} else if (primary === 'th' || primary === 'thai') {
+			language = 'Thai';
 		} else {
 			language = 'English';
 		}
@@ -499,7 +518,7 @@ function updateSubtitleLanguage() {
 	window.selectedLanguage = language;
 	textbox.lang = subtitleLocales[language];
 	const clip = currentTracks.at(-1);
-	if (dialogBox && clip) textbox.textContent = clip.dialog[language][clip.index];
+	if (dialogBox && clip) textbox.textContent = getSubtitleText(clip.dialog, language, clip.index);
 }
 
 function init() {
